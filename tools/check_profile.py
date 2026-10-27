@@ -6,8 +6,8 @@ import xml.etree.ElementTree as ET
 
 
 root = Path(__file__).resolve().parent.parent
-assets = {"hero.svg", "voicepanel-hero.svg", "support.svg", "boosty.svg", "patreon.svg", "donation-alerts.svg", "voicepanel.svg", "cv-builder.svg", "contributions.svg"}
-allowed = {"README.md", "LICENSE", ".gitattributes", ".github/CODEOWNERS", ".github/workflows/profile.yml", "tools/check_profile.py", "tools/update_contributions.py"} | {"assets/" + x for x in assets}
+assets = {"hero.svg", "voicepanel-hero.svg", "cv-builder-web-hero.svg", "cv-builder-plugin-hero.svg", "support.svg", "boosty.svg", "patreon.svg", "donation-alerts.svg", "voicepanel.svg", "cv-builder.svg", "contributions.svg"}
+allowed = {"README.md", "LICENSE", ".gitattributes", ".github/CODEOWNERS", ".github/workflows/profile.yml", "tools/check_profile.py", "tools/update_contributions.py", "assets/NOTICES.md"} | {"assets/" + x for x in assets}
 actual = set(subprocess.check_output(["git", "ls-files", "-z"], cwd=root).decode().split("\0")) - {""}
 assert actual == allowed, "Unexpected or missing public profile files"
 text = (root / "README.md").read_text(encoding="utf-8")
